@@ -2,15 +2,16 @@ import Vue from "vue";
 import App from "./App.vue";
 
 Vue.config.productionTip = false;
+
+
 import VueRouter from "vue-router";
 Vue.use(VueRouter)
 
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
-import HelloWorld from './components/HelloWorld.vue';
 import NotFound from './components/NotFound.vue';
 const routes = [
-    { path: "/", component: HelloWorld },
+    { path: "/", redirect: '/home' },
     { path: "/about", component: About },
     { path: "/home", component: Home },
     { path: "*", component: NotFound },
