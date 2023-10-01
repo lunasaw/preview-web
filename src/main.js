@@ -7,11 +7,13 @@ Vue.use(VueRouter)
 
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
+import NotFound from './components/NotFound.vue';
 const routes = [
     { path: "/", component: HelloWorld },
     { path: "/about", component: About },
     { path: "/home", component: Home },
+    { path: "*", component: NotFound },
 ];
 
 const router = new VueRouter({
