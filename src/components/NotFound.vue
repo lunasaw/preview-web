@@ -1,6 +1,11 @@
 <template>
     <div class="permission_denied">
-        <div id="tsparticles"></div>
+        <vue-particles
+            id="tsparticles"
+            :particlesInit="particlesInit"
+            :particlesLoaded="particlesLoaded"
+            :options="options"
+        />
         <div class="denied__wrapper">
             <h1>404</h1>
             <h3>
@@ -9,97 +14,44 @@
             </h3>
             <img id="astronaut" src="@/assets/images/astronaut.svg" />
             <img id="planet" src="@/assets/images/planet.svg" />
-            <a href="#"><button class="denied__link">Go Home</button></a>
+            <a href="#"
+                ><button class="denied__link" @click="goHome">
+                    Go Home
+                </button></a
+            >
         </div>
     </div>
 </template>
 
 <script>
-import { tsParticles } from "tsparticles-engine";
-// import particles from "@/assets/json/presets/particles.json";
+import particles from "@/assets/json/presets/particles_star.json";
+import { loadFull } from "tsparticles";
 
 export default {
     name: "NotFound",
     data() {
         return {
+            particlesLoaded: {},
             options: {},
         };
     },
-    mounted() {
-        this.loadParticles();
-    },
     methods: {
-        loadParticles() {
-            var particles = {
-                fpsLimit: 60,
-                particles: {
-                    number: {
-                        value: 160,
-                        density: {
-                            enable: true,
-                            area: 800,
-                        },
-                    },
-                    color: {
-                        value: "#ffffff",
-                    },
-                    shape: {
-                        type: "circle",
-                    },
-                    opacity: {
-                        value: 1,
-                        random: {
-                            enable: true,
-                            minimumValue: 0.1,
-                        },
-                        animation: {
-                            enable: true,
-                            speed: 1,
-                            minimumValue: 0,
-                            sync: false,
-                        },
-                    },
-                    size: {
-                        value: 3,
-                        random: {
-                            enable: true,
-                            minimumValue: 1,
-                        },
-                    },
-                    move: {
-                        enable: true,
-                        speed: 4,
-                        direction: "none",
-                        random: true,
-                        straight: false,
-                        outModes: {
-                            default: "out",
-                        },
-                    },
-                },
-                interactivity: {
-                    detectsOn: "canvas",
-                    events: {
-                        resize: false,
-                    },
-                },
-                detectRetina: true,
-            };
-
-            // tsParticles.load("tsparticles", particles);
-
-            tsParticles
-                .load({
-                    id: "tsparticles",
-                    options: particles,
-                })
-                .then(() => {
-                    console.log("callback - tsparticles config loaded");
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+        particlesInit(engine) {
+            loadFull(engine);
         },
+        goHome() {
+            this.$router.push({ path: "/" });
+        },
+    },
+    mounted() {
+        this.options = particles;
+        this.particlesInit = async (engine) => {
+            await loadFull(engine);
+        };
+
+        this.particlesLoaded = async (container) => {
+            console.log("Particles container loaded", container);
+        };
     },
 };
 </script>

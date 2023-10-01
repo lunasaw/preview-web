@@ -5,7 +5,9 @@ Vue.config.productionTip = false;
 
 
 import VueRouter from "vue-router";
-Vue.use(VueRouter)
+import Particles from 'vue2-particles';
+
+Vue.use(VueRouter).use(Particles)
 
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
