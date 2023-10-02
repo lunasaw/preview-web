@@ -8,8 +8,7 @@ import Particles from "vue2-particles";
 
 Vue.use(Particles);
 
-
 new Vue({
-    render: (h) => h(App),
-    router,
+  render: (h) => h(App),
+  router,
 }).$mount("#app");

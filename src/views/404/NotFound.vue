@@ -23,6 +23,7 @@
 
 <script>
 import particles from "@/assets/json/presets/particles_star.json";
+
 import { loadFull } from "tsparticles";
 
 export default {
