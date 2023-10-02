@@ -3,20 +3,19 @@ import App from "./App.vue";
 
 Vue.config.productionTip = false;
 
-
 import VueRouter from "vue-router";
-import Particles from 'vue2-particles';
+import Particles from "vue2-particles";
 
-Vue.use(VueRouter).use(Particles)
+Vue.use(VueRouter).use(Particles);
 
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
-import NotFound from '@/components/404/NotFound.vue';
+import NotFound from "@/components/404/NotFound.vue";
 const routes = [
-    { path: "/", redirect: '/home' },
+    { path: "/", redirect: "/home" },
     { path: "/about", component: About },
     { path: "/home", component: Home },
-    { path: "*", component: NotFound },
+    { name: 404, path: "*", component: NotFound },
 ];
 
 const router = new VueRouter({
