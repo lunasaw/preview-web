@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import NotFound from "@/views/404/NotFound.vue";
+import PageError from "@/views/500/PageError.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -23,6 +24,11 @@ const routes = [
     path: "/*",
     name: "404",
     component: NotFound,
+  },
+  {
+    path: "/error",
+    name: "500",
+    component: PageError,
   },
 ];
 
