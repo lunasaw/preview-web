@@ -7,15 +7,12 @@
       :options="options"
     />
     <div class="denied__wrapper">
-      <h1>500</h1>
-      <h3>
-        LOST IN <span>SPACE</span> App-Name? Hmm, looks like that page has
-        error.
-      </h3>
+      <h1>{{ $store.state.pageError.code }}</h1>
+      <h3 v-html="$store.state.pageError.message"></h3>
       <img id="astronaut" src="@/assets/images/astronaut.svg" />
       <img id="planet" src="@/assets/images/planet.svg" />
       <a href="#"
-        ><button class="denied__link" @click="goHome">Go Home</button></a
+        ><button class="denied__link" @click="goBack">Go Back</button></a
       >
     </div>
   </div>
@@ -25,7 +22,7 @@
 import particles from "@/assets/json/presets/particles.json";
 
 import { loadFull } from "tsparticles";
-
+// import { mapGetters } from "vuex";
 export default {
   name: "PageError",
   data() {
@@ -38,8 +35,8 @@ export default {
     particlesInit(engine) {
       loadFull(engine);
     },
-    goHome() {
-      this.$router.push({ path: "/" });
+    goBack() {
+      this.$router.back();
     },
   },
   mounted() {
