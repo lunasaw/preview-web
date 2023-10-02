@@ -11,7 +11,7 @@ Vue.use(VueRouter).use(Particles)
 
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
-import NotFound from './components/NotFound.vue';
+import NotFound from '@/components/404/NotFound.vue';
 const routes = [
     { path: "/", redirect: '/home' },
     { path: "/about", component: About },
