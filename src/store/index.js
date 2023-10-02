@@ -14,6 +14,11 @@ const data = {
         "ERRPR IN <span>SPACE</span> App-Name? Hmm, looks like that page has error.",
     },
   },
+
+  mutations: {
+    // actions: {},
+    // getters: {}
+  },
 };
 
 const store = new Vuex.Store(data);
