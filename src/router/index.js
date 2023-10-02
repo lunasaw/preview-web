@@ -7,11 +7,6 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "404",
-    component: NotFound,
-  },
-  {
-    path: "/*",
     name: "home",
     component: HomeView,
   },
@@ -23,6 +18,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/*",
+    name: "404",
+    component: NotFound,
   },
 ];
 
