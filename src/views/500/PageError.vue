@@ -7,8 +7,8 @@
       :options="options"
     />
     <div class="denied__wrapper">
-      <h1>{{ $store.state.pageError.code }}</h1>
-      <h3 v-html="$store.state.pageError.message"></h3>
+      <h1>{{ pageError.code }}</h1>
+      <h3 v-html="pageError.message"></h3>
       <img id="astronaut" src="@/assets/images/astronaut.svg" />
       <img id="planet" src="@/assets/images/planet.svg" />
       <a href="#"
@@ -22,9 +22,12 @@
 import particles from "@/assets/json/presets/particles.json";
 
 import { loadFull } from "tsparticles";
-// import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "PageError",
+  computed: {
+    ...mapState(["pageError"]),
+  },
   data() {
     return {
       particlesLoaded: {},

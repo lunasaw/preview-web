@@ -7,8 +7,8 @@
       :options="options"
     />
     <div class="denied__wrapper">
-      <h1>{{ $store.state.notFound.code }}</h1>
-      <h3 v-html="$store.state.notFound.message"></h3>
+      <h1>{{ notFound.code }}</h1>
+      <h3 v-html="notFound.message"></h3>
       <img id="astronaut" src="@/assets/images/astronaut.svg" />
       <img id="planet" src="@/assets/images/planet.svg" />
       <a href="#"
@@ -22,9 +22,12 @@
 import particles from "@/assets/json/presets/particles_star.json";
 
 import { loadFull } from "tsparticles";
-
+import { mapState } from "vuex";
 export default {
   name: "NotFound",
+  computed: {
+    ...mapState(["notFound"]),
+  },
   data() {
     return {
       particlesLoaded: {},
