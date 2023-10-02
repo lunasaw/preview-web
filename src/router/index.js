@@ -21,14 +21,14 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/*",
-    name: "404",
-    component: NotFound,
-  },
-  {
     path: "/error",
     name: "500",
     component: PageError,
+  },
+  {
+    path: "/*",
+    name: "404",
+    component: NotFound,
   },
 ];
 

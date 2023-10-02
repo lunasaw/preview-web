@@ -22,12 +22,12 @@
 </template>
 
 <script>
-import particles from "@/assets/json/presets/particles_star.json";
+import particles from "@/assets/json/presets/particles.json";
 
 import { loadFull } from "tsparticles";
 
 export default {
-  name: "NotFound",
+  name: "PageError",
   data() {
     return {
       particlesLoaded: {},
