@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import NotFound from "@/views/404/NotFound.vue";
-import PageError from "@/views/500/PageError.vue";
+const PageError = () => import("@/views/500/PageError.vue");
+const NotFound = () => import("@/views/404/NotFound.vue");
 Vue.use(VueRouter);
 
 const routes = [
@@ -20,6 +20,9 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+];
+
+const pageRoutes = [
   {
     path: "/error",
     name: "500",
@@ -31,9 +34,19 @@ const routes = [
     component: NotFound,
   },
 ];
+routes.push(...pageRoutes);
 
 const router = new VueRouter({
   routes,
+});
+
+const authUrl = [];
+router.beforeEach((to, from, next) => {
+  if (!authUrl.includes(to.path)) {
+    next();
+    return;
+  }
+  // 检查放行
 });
 
 export default router;

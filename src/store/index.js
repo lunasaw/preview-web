@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+
 Vue.use(Vuex);
 const data = {
   state: {
@@ -19,6 +20,14 @@ const data = {
     // actions: {},
     // getters: {}
   },
+
+  getters: {
+    notFound: (state) => state.notFound,
+    pageError: (state) => state.pageError,
+    token: () => "",
+  },
+
+  modules: {},
 };
 
 const store = new Vuex.Store(data);
