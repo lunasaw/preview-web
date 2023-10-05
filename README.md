@@ -3,6 +3,8 @@
 ## Project setup
 ```
 npm install
+npm i -D prettier eslint-config-prettier
+
 ```
 
 ### Compiles and hot-reloads for development
